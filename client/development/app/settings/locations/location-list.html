@@ -1,0 +1,32 @@
+<div style="margin-top:20px;min-height:400px;">
+    <div class="row">
+        <div class="col-xs-1"></div>
+        <div class="col col-xs-10">
+            <button class="btn btn-sm btn-default pull-right"
+                    ng-click="locationMain.create();">
+                New Location
+            </button>
+            <h4 style="color:#fff;">Manage Locations</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10">
+            <ul class="list-group pa-list">
+                <li class="list-group-item" ng-repeat="location in locationMain.locations | orderBy: 'location'">
+                    {{location.location}} ({{location.total}})
+
+                    <div style="position:absolute; top:6px; right:6px;">
+                        <xs-action-buttons
+                                has-delete="true"
+                                has-edit="true"
+                                on-confirm-delete="locationMain.delete(location)"
+                                on-edit="locationMain.edit(location)">
+                        </xs-action-buttons>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

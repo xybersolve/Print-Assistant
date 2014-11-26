@@ -1,0 +1,36 @@
+<div class="action-buttons" style="display:inline;">
+
+    <div ng-hide="isDeleting" class="btn-group btn-group-xs">
+        <button type="button"
+                ng-show="hasClone==true"
+                class="btn btn-default btn-xs"
+                ng-click="startClone()">
+            Clone
+        </button>
+        <button type="button"
+                ng-show="hasEdit==true"
+                class="btn btn-default btn-xs"
+                ng-click="startEdit()">
+            Edit
+        </button>
+        <button type="button"
+                class="btn btn-danger btn-xs"
+                ng-show="hasDelete==true"
+                ng-click="startDelete()">
+            Delete
+        </button>
+
+    </div>
+
+    <div ng-show="isDeleting" class="btn-group btn-group-xs">
+        <button type="button" class="btn btn-danger btn-xs"
+                ng-click="confirmDelete()">
+            Confirm Delete
+        </button>
+        <button type="button" class="btn btn-default btn-xs"
+                ng-click="cancelDelete();">
+            Cancel
+        </button>
+
+    </div>
+</div>

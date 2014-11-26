@@ -1,0 +1,64 @@
+<div ng-include="'app/image/toolbar/image-toolbar.html'"></div>
+
+<div class="row-fluid thumbnails pa-gallery">
+
+    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6 thumbnail pa-thumbnail"
+         ng-repeat="image in imageList.filtered = (imageList.images | filter: {name: imageList.searchImagesBy} | orderBy: imageList.sortOrder)"
+         ng-class="{selected:image===imageList.selectedItem}"
+         ng-click="imageList.selectedItem=image">
+
+        <a ng-click="imageList.selectedItem=image">
+            <img class="img-responsive img-thumbnail"
+                 ng-src="img/gallery/medium/{{image.fileStub}}.jpg"
+                 tile="{{image.name}}">
+        </a>
+
+        <div class="caption pa-caption">
+            {{image.name}}<br>
+            {{image.line}}
+        </div>
+
+        <div class="clearfix pa-entity-action-button-group">
+            <xs-action-buttons
+                has-edit="true"
+                has-delete="true"
+                on-new="imageList.startNew()"
+                on-delete-confirm="imageList.deletePrint(image)"
+                on-edit="imageList.startEdit(image)"
+                on-clone="imageList.startClone(image)">
+            </xs-action-buttons>
+        </div>
+    </div>
+</div>
+<!--
+<div class="row-fluid thumbnails pa-gallery" id="print-display" ng-init="printMain.show();">
+    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6 thumbnail pa-thumbnail"
+         ng-repeat="print in printMain.filtered = (printMain.prints | paStatusFilter: printMain.selected.status | filter: {status: printMain.filterByStatus, name: printMain.searchPrintsBy, location: printMain.filterByLocation} |orderBy: printMain.sortOrder)"
+         ng-class="{selected:print===printMain.selectedItem}"
+         ng-click="printMain.selectedItem=print">
+
+        <a ng-click="printMain.selectedItem=print">
+            <img class="img-responsive img-thumbnail"
+                 ng-src="img/gallery/medium/{{print.fileStub}}.jpg"
+                 tile="{{print.name}}">
+        </a>
+
+        <div class="clearfix pa-print-action-buttons">
+            <pa-print-action-buttons
+                    on-new="printMain.startNew()"
+                    on-delete-confirm="printMain.deletePrint(print)"
+                    on-edit="printMain.startEdit(print)"
+                    on-clone="printMain.startClone(print)">
+            </pa-print-action-buttons>
+        </div>
+
+        <p class="caption pa-caption">
+            {{print.name}}<br>
+            {{print.size}} - {{print.material}}<br>
+            {{print.location}} ({{print.status}})<br>
+
+        </p>
+
+    </div>
+</div>
+-->

@@ -1,0 +1,1 @@
+angular.module('app.image', ['app.services', 'xs.file.reader', 'xs.ui.wizard']);

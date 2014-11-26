@@ -1,0 +1,5 @@
+<select class="form-control input-sm"
+        ng-model="filterModel"
+        ng-options="l.name as l.name for l in lines | orderBy:'location'"
+        default-text="Lines">
+</select>

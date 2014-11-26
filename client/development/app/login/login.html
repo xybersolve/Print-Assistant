@@ -1,0 +1,57 @@
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-sm-6 col-sm-offset-3">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Login to Photo Assistant
+                </div>
+                <div class="panel-body">
+                     <form class="form-horizontal" action="" role="form">
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="user-email">Email</label>
+                            <div class="col-sm-6 input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input ng-model="login.loginUser.email" class="form-control input-medium" type="email" id="user-email" placeHolder="Email"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" for="user-password">Password</label>
+                            <div class="col-sm-6 input-group">
+                                <span class="input-group-addon input-medium"><i class="glyphicon glyphicon-lock"></i></span>
+                                <input ng-model="login.loginUser.password" class="form-control input-sm" type="password" id="user-password" placeholder="Password"/>
+                            </div>
+                        </div>
+
+                         <div class="checkbox col-sm-offset-3">
+                             <label class="col-sm-8">
+                                 <input type="checkbox" ng-model="login.loginUser.autoLogin"> Remember me
+                             </label>
+                         </div>
+
+                        <div class="pull-right">
+                            <button ng-click="login.login();" class="btn btn-primary">
+                                Login
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="panel-footer">
+                    <!--
+                    <h4>Login Using</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item">Facebook</li>
+                        <li class="list-group-item">Twitter</li>
+                        <li class="list-group-item">Github</li>
+                    </ul>
+                    -->
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+

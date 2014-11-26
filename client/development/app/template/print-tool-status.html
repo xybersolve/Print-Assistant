@@ -1,0 +1,5 @@
+<select class="form-control input-sm"
+        ng-model="filterModel"
+        ng-options="s.status as s.status for s in status | orderBy:'status'"
+        default-text="Status">
+</select>

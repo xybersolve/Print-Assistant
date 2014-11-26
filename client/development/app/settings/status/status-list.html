@@ -1,0 +1,46 @@
+<div style="margin-top:20px;min-height:400px;">
+
+    <div class="row">
+        <div class="col-xs-1"></div>
+        <div class="col col-xs-10">
+            <!--
+            <button class="btn btn-sm btn-default pull-right"
+                    ng-click="statusMain.create();">
+                New Status
+            </button>
+            -->
+            <h4 style="color:#fff;">
+                Status List
+            </h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10">
+            <ul class="list-group pa-list">
+                <li class="list-group-item" ng-repeat="status in statusMain.status | orderBy: 'status' ">
+                    {{status.status}}
+
+                    <div style="position:absolute; top:6px; right:6px;">
+                        <!--
+                        <div xs-action-buttons
+                             on-confirm-delete="statusMain.delete(location)"
+                             on-edit="statusMain.edit(location)"
+                             is-deletable="{{location.total===0}}">
+                        </div>
+                        -->
+                    </div>
+                </li>
+            </ul>
+            <!--
+            <div class="alert alert-info">
+                <h4>Status Edit</h4>
+                <p>
+
+                </p>
+            </div>
+            -->
+        </div>
+    </div>
+</div>

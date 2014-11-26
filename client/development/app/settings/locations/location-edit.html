@@ -1,0 +1,131 @@
+<pa-panel title="Edit Location">
+
+    <div class="row">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-xs-3 control-label text-right">
+                    Name:
+                </label>
+                <div class="col-xs-8">
+                    <input class="form-control" ng-model="locationEdit.location.location" id="location" placeholder="Location Name">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label text-right">
+                    Biz Name:
+                </label>
+                <div class="col-xs-8">
+                    <input class="form-control" ng-model="locationEdit.location.company" id="location-business-name" placeholder="Business Name">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label text-right">
+                    Contact:
+                </label>
+                <div class="col-xs-4">
+                    <input class="form-control" ng-model="locationEdit.location.firstName" id="first-name" placeholder="First Name">
+                </div>
+                <div class="col-xs-4">
+                    <input class="form-control" ng-model="locationEdit.location.lastName" id="last-name" placeholder="Last Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label text-right">
+                    Phones:
+                </label>
+                <div class="col-xs-4">
+                    <input ui-mask="(999) 999-9999" class="form-control" ng-model="locationEdit.location.phone1" id="phone1" type="tel" placeholder="(nnn) nnn-nnnn">
+                </div>
+                <div class="col-xs-4">
+                    <input ui-mask="(999) 999-9999" class="form-control" ng-model="locationEdit.location.phone2" id="phone2" type="tel" placeholder="(nnn) nnn-nnnn">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-3 control-label text-right">
+                    Email:
+                </label>
+                <div class="col-xs-8">
+                    <input class="form-control" ng-model="locationEdit.location.email" id="email" type="email" placeholder="email@domain.com">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label text-right">
+                    Address:
+                </label>
+                <div class="col-xs-8">
+                    <input class="form-control" ng-model="locationEdit.location.address" id="address" type="text" placeholder="Address">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label text-right">
+                    City &amp; State:
+                </label>
+                <div class="col-xs-4">
+                    <input class="form-control" ng-model="locationEdit.location.city" id="city" type="text" placeholder="City">
+                </div>
+                <div class="col-xs-1">
+                    <input class="form-control" ng-model="locationEdit.location.state" id="state" type="text" placeholder="CA">
+                </div>
+                <div class="col-xs-3">
+                    <input class="form-control" ng-model="locationEdit.location.postalCode" id="postalCode" type="text" placeholder="Postal">
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label class="col-xs-3 control-label text-right">
+                    Commission:
+                </label>
+                <div class="col-xs-1">
+                    <input type="checkbox" class="checkbox pull-left" ng-model="locationEdit.location.usesCommission">
+                </div>
+                <div class="col-xs-2">
+                    <input class="form-control pull-left" ng-model="locationEdit.location.commission" id="commission" type="number">
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label class="col-xs-3 control-label text-right">
+                    Displaying:
+                </label>
+                <div class="col-xs-1">
+                    <input type="checkbox" class="checkbox pull-left" ng-model="locationEdit.location.displaying">
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label class="col-xs-3 control-label text-right">
+                    Active:
+                </label>
+                <div class="col-xs-1">
+                    <input type="checkbox" class="checkbox pull-left" ng-model="locationEdit.location.active" id="active">
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-xs-3 control-label text-right"></div>
+                <div class="col-xs-8 text-right">
+                    <button class="btn btn-primary"
+                            ng-click="locationEdit.save()">
+                        Save
+                    </button>
+
+                    <button class="btn btn-default"
+                            ng-click="locationEdit.cancel()">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+
+</pa-panel>

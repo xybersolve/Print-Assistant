@@ -1,0 +1,43 @@
+<table class="ledger" width="100%">
+    <tr style="background-color:#666666;color:#ffffff;">
+        <th width="5%" align="center" style="border-left:1px solid #444;">
+            #
+        </th>
+        <th width="65%" align="left">
+            Print Name
+        </th>
+        <th width="15%" align="left">
+            Size
+        </th>
+        <th width="15%" align="left">
+            Retail
+        </th>
+    </tr>
+
+    {{#prints}}
+    <tr style="border-top:1px solid #222222;background-color:{{bgColor}}">
+        <td align="right" style="border-left:1px solid #444;">
+            {{index}}
+        </td>
+
+        <td align="left" >
+            {{name}}
+        </td>
+        <td align="right" >
+            {{size}}
+        </td>
+        <td align="right">
+            ${{price.price}}.00
+        </td>
+    </tr>
+    {{/prints}}
+
+    <tr class="totals">
+        <td align="right" colspan="3" style="padding-right:4px;border:1px solid #444;background-color:#fff;color:#222;">
+            Total:
+        </td>
+        <td align="right" style="padding-right:4px;border:1px solid #444;background-color:#fff;color:#222;">
+            ${{total}}.00
+        </td>
+    </tr>
+</table>

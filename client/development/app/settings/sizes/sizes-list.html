@@ -1,0 +1,142 @@
+<div style="min-height:400px;padding-top:20px; ">
+
+    <accordion close-others="true">
+        <accordion-group heading="Aspect Ratio: {{ratio.ratio}}" ng-repeat="ratio in sizeMain.sizeByRatio" style="background-color: #7F7F7F !important;">
+            <div colspan="2" ng-repeat="size in ratio.sizes" style="padding-left:25px;padding-right:25px;">
+                <h4 style="color:#fff;">Size: {{size.size}}</h4>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <table class="table table-striped table-bordered table-condensed pa-table" style="color:#222;">
+                            <tr>
+                                <th colspan="10" style="background-color:#474747;color:#ddd;">
+                                    Price
+                                </th>
+                            </tr>
+                            <tr ng-repeat="price in size.price">
+                                <td>{{price.material}}</td>
+                                <td>{{price.price | currency}}</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="col-xs-6">
+                        <table class="table table-striped table-bordered table-condensed pa-table" style="color:#222;">
+                            <tr>
+                                <th colspan="10" style="background-color:#474747;color:#ddd;">
+                                    Cost
+                                </th>
+                            </tr>
+                            <tr ng-repeat="cost in size.cost">
+                                <td>{{cost.material}}</td>
+                                <td>{{cost.cost | currency}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!--
+                <h5>Cost</h5>
+                <div colspan="2" ng-repeat="cost in size.cost" style="padding-left: 40px;">
+                    {{cost.material}} - {{cost.cost}}
+                </div>
+                <h5>Price</h5>
+                <div colspan="2" ng-repeat="price in size.price" style="padding-left: 40px;">
+                    {{price.material}} - {{price.price}}
+                </div>
+                -->
+            </div>
+        </accordion-group>
+    </accordion>
+
+    <!--
+        <div style="padding-left:0; border:1px #ccc solid;">
+            {{ratio.ratio}}
+            <div colspan="2" ng-repeat="size in ratio.sizes" style="padding-left: 20px; border:1px #ccc solid;">
+                {{size.size}}
+                <h4>Cost</h4>
+                <div colspan="2" ng-repeat="cost in size.cost" style="padding-left: 40px; border:1px #ccc solid;">
+                    {{cost.material}} - {{cost.cost}}
+                </div>
+                <h4>Price</h4>
+                <div colspan="2" ng-repeat="price in size.price" style="padding-left: 40px; border:1px #ccc solid;">
+                    {{price.material}} - {{price.price}}
+                </div>
+
+            </div>
+        </div>
+        -->
+    </div>
+
+    <!--
+    <table class="table table-bordered table-condensed">
+        <tr>
+            <th>Ratio</th>
+            <th>Size</th>
+            <th>Price</th>
+        </tr>
+
+
+        <tr ng-repeat="ratios in sizeMain.sizeByRatio">
+            <pa-debug-show-object target="ratios"></pa-debug-show-object>
+            <td class="text-right">
+               {{ratios.ratio}}
+
+            </td>
+            <td colspan="2" class="text-right" ng-repeat="sizes in ratios.sizes">
+                {{sizes.size}}
+            </td>
+
+        </tr>
+
+    </table>
+    -->
+    <!--
+    <div ng-repeat="ratios in sizeMain.ratioSizePricing">
+
+        <div>
+
+        </div>
+    </div>
+
+                <table>
+                    <tr>
+                        <td colspan="2" class="text-right" ng-repeat="sizes in ratios.sizes">
+                            {{sizes.size}}
+                        </td>
+                    </tr>
+                </table>
+
+    -->
+
+    <!--
+    <div ng-repeat="ratio in sizeMain.sizeByRatio">
+        {{ratio.ratio}}
+        <h5>Size</h5>
+        <div ng-repeat="size in ratio.sizes">
+            {{size.size}}
+            <!--
+            <h6>Cost</h6>
+            <div ng-repeat="costs in sizes.cost track by $index">
+                {{costs.material}} - {{costs.cost}}
+            </div>
+
+           <h6>Price</h6>
+            <div ng-repeat="prices in sizes.price track by $index">
+                {{prices.material}} - {{prices.price}}
+            </div>
+            -->
+        <!--
+        <div ng-repeat="size in ratio.sizes | orderBy:'size'">
+            <div>
+                {{size.size}}
+            </div>
+            <div ng-repeat="cost in size.cost">
+                {{cost}}
+            </div>
+            <div ng-repeat="price in size.price">
+                {{price}}
+            </div>
+        </div>
+        -->
+
+</div>

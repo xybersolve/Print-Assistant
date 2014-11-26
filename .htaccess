@@ -1,0 +1,20 @@
+Options +FollowSymLinks -Indexes -MultiViews
+
+<IfModule mod_rewrite.c>
+
+RewriteEngine On
+
+# Insure our js and css transferred  properly
+AddHandler text/css .css
+AddType text/css .css
+
+AddHandler text/javascript .js
+AddType text/javascript .js
+
+#  Reroute port 80 to node web server (express)
+# [P] directive - forces proxy, instead of client redirect
+RewriteBase /
+RewriteRule ^(.*) http://127.0.0.1:8000/$1 [NC,P] 
+
+
+</IfModule>

@@ -1,0 +1,171 @@
+<div style="margin-top:30px;min-height:400px;">
+
+    <div class="row">
+
+            <div class="col-xs-offset-1 col-xs-11">
+                <h4 style="color:#ffffff;">{{userEdit.user.username}}</h4>
+            </div>
+
+            <form class="form-horizontal">
+
+                <div class="form-group">
+                    <label class="col-xs-3 control-label text-right">
+                        First & Last:
+                    </label>
+                    <div class="col-xs-4">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="userEdit.user.firstName"
+                               name="firstName"
+                               id="first-name"
+                               placeholder="First Name">
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="userEdit.user.lastName"
+                               name="lastName"
+                               id="last-name"
+                               placeholder="Last Name">
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-3 control-label text-right">
+                        Company:
+                    </label>
+                    <div class="col-xs-8">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="userEdit.user.company"
+                               name="company"
+                               id="user-company"
+                               placeholder="Company">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-xs-3 control-label text-right">
+                        Byline:
+                    </label>
+                    <div class="col-xs-8">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="userEdit.user.byline"
+                               name="byline"
+                               id="user-byline"
+                               placeholder="Company Byline">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-3 control-label text-right">
+                        Website:
+                    </label>
+                    <div class="col-xs-8">
+                        <input type="url"
+                               class="form-control"
+                               ng-model="userEdit.user.website"
+                               name="website"
+                               id="website"
+                               placeholder="company.com">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-3 control-label text-right">
+                        Email:
+                    </label>
+                    <div class="col-xs-8">
+                        <input type="email"
+                               class="form-control"
+                               ng-model="userEdit.user.email"
+                               name="userName"
+                               id="user-email"
+                               placeholder="user@domain.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label text-right" for="user-phone">
+                        Phone:
+                    </label>
+                    <div class="col-xs-8">
+                        <input type="tel"
+                               class="form-control"
+                               ui-mask="(999) 999-9999"
+                               ng-model="userEdit.user.phone"
+                               name="userPhone"
+                               id="user-phone">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-3 control-label text-right" for="user-address1">
+                        Address:
+                    </label>
+                    <div class="col-xs-8">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="userEdit.user.address1"
+                               name="userAddress1"
+                               id="user-address1"
+                               placeholder="User Address">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-3 control-label text-right" for="user-address2">
+                        Address:
+                    </label>
+                    <div class="col-xs-8">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="userEdit.user.address2"
+                               name="userAddress2"
+                               id="user-address2"
+                               placeholder="User Address 2">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-3 control-label text-right">
+                        City &amp; State:
+                    </label>
+                    <div class="col-xs-4">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="userEdit.user.city"
+                               id="city"
+                               placeholder="City">
+                    </div>
+                    <div class="col-xs-1">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="userEdit.user.state"
+                               ui-mask="AA"
+                               id="state">
+                    </div>
+                    <div class="col-xs-3">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="userEdit.user.postalCode"
+                               ui-mask="99999"
+                               id="postalCode">
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-xs-3 control-label text-right"></div>
+                    <div class="col-xs-8 text-right">
+                        <button class="btn btn-primary"
+                                ng-click="userEdit.save()">
+                            Save
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+</div>

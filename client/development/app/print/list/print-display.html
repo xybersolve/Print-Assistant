@@ -1,0 +1,35 @@
+<div class="row-fluid thumbnails pa-gallery" id="print-display" ng-init="printMain.show();">
+    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6 thumbnail pa-thumbnail"
+         ng-repeat="print in printMain.filtered = (printMain.prints | paStatusFilter: printMain.selected.status | filter: {status: printMain.filterByStatus, name: printMain.searchPrintsBy, location: printMain.filterByLocation} |orderBy: printMain.sortOrder)"
+         ng-class="{selected:print===printMain.selectedItem}"
+         ng-click="printMain.selectedItem=print">
+
+        <a ng-click="printMain.selectedItem=print">
+            <img class="img-responsive img-thumbnail"
+                 ng-src="img/gallery/medium/{{print.fileStub}}.jpg"
+                 tile="{{print.name}}">
+        </a>
+
+        <div class="clearfix pa-entity-action-button-group">
+            <xs-action-buttons
+                 has-clone="true"
+                 has-edit="true"
+                 has-delete="true"
+                 on-new="printMain.startNew()"
+                 on-delete-confirm="printMain.deletePrint(print)"
+                 on-edit="printMain.startEdit(print)"
+                 on-clone="printMain.startClone(print)">
+            </xs-action-buttons>
+        </div>
+
+        <p class="caption pa-caption">
+            <!--<span class="glyphicon glyphicon-star pull-right" ng-if="print.bonified"></span>-->
+            {{print.name | xsEllipsis:18}}<br>
+            {{print.material}}<br>
+            {{print.location}} ({{print.status}})<br>
+            <h4>{{print.size | xsStripSpace}}</h4>
+        </p>
+
+    </div>
+</div>
+

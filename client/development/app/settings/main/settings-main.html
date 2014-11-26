@@ -1,0 +1,15 @@
+<pa-panel title="Settings">
+    <div class="row well well-sm" style="margin-top:20px;">
+        <div class="col-xs-12">
+            <tabset>
+                <tab ng-repeat="tab in settingsMain.tabs"
+                     heading="{{tab.heading}}"
+                     select="settingsMain.go(tab.state);tab.active=true;"
+                     active="tab.active">
+                </tab>
+            </tabset>
+
+            <div ui-view="display"></div>
+        </div>
+    </div>
+</pa-panel>
