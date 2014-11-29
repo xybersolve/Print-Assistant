@@ -1,0 +1,42 @@
+<div class="row" style="padding:0 6px !important; margin:0 0 0 6px !important;">
+    <table class="table table-responsive table-striped table-condensed pa-table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Material</th>
+            <th>Size</th>
+            <th>Location</th>
+            <th>Status</th>
+            <!--<th>sizeSort</th>-->
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- status: printMain.filterByStatus, -->
+        <!--<tr ng-repeat="print in printMain.prints | filter: {name: printMain.searchPrintsBy, location: printMain.filterByLocation} |orderBy: printMain.sortOrder">-->
+        <tr ng-repeat="print in printMain.filtered = (printMain.prints | paStatusFilter: printMain.selected.status | filter: {status: printMain.filterByStatus, name: printMain.searchPrintsBy, location: printMain.filterByLocation} |orderBy: printMain.sortOrder)">
+
+            <td>{{print.name | xsEllipsis:28}}</td>
+            <td>{{print.material | xsFirstword}}</td>
+            <td>{{print.size | xsStripSpace}}</td>
+            <td>{{print.location}}</td>
+            <td>{{print.status}}</td>
+            <!--<td>{{print.sizeSort}}</td>-->
+            <td>
+                <xs-action-buttons
+                        has-clone="true"
+                        has-edit="true"
+                        has-delete="true"
+                        on-new="printMain.startNew()"
+                        on-delete-confirm="printMain.deletePrint(print)"
+                        on-edit="printMain.startEdit(print)"
+                        on-clone="printMain.startClone(print)">
+                </xs-action-buttons>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+

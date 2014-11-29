@@ -1,0 +1,6 @@
+<select class="form-control input-sm"
+        ng-model="filterModel"
+        ng-options="l.location as l.location for l in locations | orderBy:'location'"
+        ng-change="onChange();"
+        default-text="Location">
+</select>

@@ -1,0 +1,85 @@
+<table class="header">
+    <tr>
+        <td width="50%" style="border-right: 1px solid #222222;">
+           <table>
+               <tr>
+                   <td>
+                        {{user.firstName}} {{user.lastName}}
+                   </td>
+               </tr>
+               <tr>
+                   <td>
+                        {{user.address1}}
+                   </td>
+               </tr>
+               {{#if user.address2 }}
+               <tr>
+                   <td>
+                       {{user.address2}}
+                   </td>
+               </tr>
+               {{/if}}
+               <tr>
+                   <td>
+                       {{user.city}}, {{user.state}}  {{user.postalCode}}
+                   </td>
+               </tr>
+
+               <tr>
+                   <td>
+                       {{user.email}}
+                   </td>
+               </tr>
+
+               <tr>
+                   <td>
+                       Tel: {{user.phone}}
+                   </td>
+               </tr>
+           </table>
+        </td>
+
+        <td width="50%">
+            <table>
+                <tr>
+                    <td>
+                        {{client.company}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        {{client.firstName}} {{client.lastName}}
+                    </td>
+                </tr>
+
+                {{#if client.address }}
+                <tr>
+                    <td>
+                        {{client.address}}
+                    </td>
+                </tr>
+                {{/if}}
+                <tr>
+                    <td>
+                        {{client.city}}, {{client.state}}  {{client.postalCode}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        {{client.email}}
+                    </td>
+                </tr>
+                {{#if client.phone1}}
+                <tr>
+                    <td>
+                        Tel: {{client.phone1}}
+                    </td>
+                </tr>
+                {{/if}}
+            </table>
+
+        </td>
+    </tr>
+</table>

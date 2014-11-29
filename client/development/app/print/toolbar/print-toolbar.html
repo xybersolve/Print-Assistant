@@ -1,0 +1,163 @@
+<div class="pa-toolbar" ng-controller="PrintToolbarCtrl as printToolbar">
+
+    <div class="row">
+
+        <div class="col-xs-2">
+            <div style="margin-left:12px;">
+                <pa-list-display-toggle
+                        display-title="Display prints"
+                        display-state="prints.display"
+                        list-title="List prints"
+                        list-state="prints.list">
+                </pa-list-display-toggle>
+            </div>
+        </div>
+
+        <div class="col-xs-2">
+            <div>
+                <pa-new-button on-start-new="printMain.startNew()" title-text="Create new print" display="New Print"></pa-new-button>
+            </div>
+        </div>
+
+        <div class="col-xs-2">
+            <pa-print-tool-location filter-model="printMain.filterByLocation"
+                                    locations="printMain.locations"
+                                    on-change="printMain.gotLocationChange()">
+
+            </pa-print-tool-location>
+        </div>
+
+        <div class="col-xs-2">
+            <pa-common-tool-search search-model="printMain.searchPrintsBy"
+                                   on-change="printMain.gotSearchChange()"
+                                   pa-placeholder="Search">
+
+            </pa-common-tool-search>
+        </div>
+
+        <div class="col-xs-3">
+            <pa-common-tool-line filter-model="printMain.filterByLine" lines="printMain.lines" pa-placeholder="Lines"></pa-common-tool-line>
+        </div>
+        <!--
+        <div class="col-xs-2">
+            <pa-print-tool-sort sort-order="printMain.sortOrder"></pa-print-tool-sort>
+        </div>
+        -->
+        <div class="col-xs-1">
+            <pa-common-tool-clear-filters on-clear="printMain.clearSearch()"></pa-common-tool-clear-filters>
+        </div>
+    </div><!-- /.row -->
+
+    <div class="row"
+         style="margin-bottom:6px; margin-top:8px;"
+         ng-show="printMain.filterByLocation==='Private Buyer' || printMain.filterByLocation==='Commercial Buyer'">
+
+        <div class="col-lg-2 col-md-1 col-sm-2">
+            <div class="pull-right">
+                Buyer
+            </div>
+        </div>
+        <div class="col-xs-5">
+            <input type="text"
+                   class="form-control input-sm"
+                   ng-module="printToolbar.buyer.name"
+                   placeholder="Buyer Name">
+            <!--
+            <select class="form-control input-sm"
+                    ng-model="leadList.filterByInterest"
+                    ng-options="i.level as i.level for i in leadList.interests | orderBy:'level'"
+                    default-text="Interest">
+            </select>
+            -->
+        </div>
+
+        <div class="col-xs-5">
+
+        </div>
+
+    </div>
+
+    <div class="row"
+         style="margin-bottom:6px; margin-top:8px;"
+         ng-show="printToolbar.addNewBuyer===true">
+
+        <div class="col-lg-2 col-md-1 col-sm-2">
+            <div class="pull-right">
+                New Buyer
+            </div>
+        </div>
+
+        <div class="col-xs-3">
+            <input type="text"
+                   class="form-control input-sm"
+                   ng-module="printToolbar.buyer.name"
+                   placeholder="Buyer Name">
+        </div>
+        <div class="col-xs-3">
+            <input type="email"
+                   class="form-control input-sm"
+                   ng-module="printToolbar.buyer.email"
+                   placeholder="Buyer Name">
+        </div>
+
+        <div class="col-xs-2">
+            <input
+                   class="form-control input-sm"
+                   ng-module="printToolbar.buyer.name"
+                   placeholder="Buyer Name">
+        </div>
+        <div>
+            <button type="button"
+                    class="btn btn-sm btn-primary">
+                Save
+            </button>
+        </div>
+
+    </div>
+
+    <div class="row" style="margin-bottom:6px; margin-top:8px;">
+        <div class="row">
+            <div class="col-lg-2 col-md-1 col-sm-2">
+                <div class="pull-right">
+                    Status
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                <ui-select multiple
+                           ng-model="printMain.selected.status"
+                           theme="bootstrap"
+                           ng-disabled="disabled"
+                           ng-change="printMain.gotStatusChange();">
+
+                    <ui-select-match placeholder="Show by Status...">{{$item}}</ui-select-match>
+
+                    <ui-select-choices repeat="status in printMain.available.status | orderBy: status" >
+                        {{status}}
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+    </div><!-- /.row -->
+
+    <div class="row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-9">
+            <div style="font-size:14px;color:#ddd;margin:2px 2px;padding:2px 8px 8px 14px;" >
+                Location:
+                <span class="label label-inverse"
+                      style="font-size:inherit;">{{printMain.filterByLocation || 'All Locations'}}</span>
+                Total Prints: <span class="badge badge-info" style="font-size:inherit;">{{printMain.filtered.length}}</span>
+                <!--&nbsp;&nbsp;Status: <span class="label label-inverse" style="font-size:inherit;font-weight:bold;">{{printMain.selected.status.join(', ')}}</span>-->
+                <!--remaining: <span class="badge badge-info">{{filtered.length}}</span>-->
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <button class="btn btn-sm btn-primary"
+                    style="position:absolute; bottom:-34px;right:12px;"
+                    ng-disabled="printMain.filterByLocation===undefined"
+                    ng-click="printMain.invoice();">
+                Invoice
+            </button>
+        </div>
+    </div> <!-- /.row -->
+</div> <!-- /.pa-toolbar -->

@@ -1,0 +1,41 @@
+<div class="pa-toolbar">
+
+    <div class="row">
+
+        <div class="col-xs-2">
+            <div class="btn-group">
+                <pa-list-display-toggle
+                        display-title="Display Images"
+                        display-state="images.display"
+                        list-title="List Images"
+                        list-state="images.list">
+                </pa-list-display-toggle>
+            </div>
+        </div>
+
+        <div class="col-xs-2">
+            <div>
+                <pa-new-button on-start-new="imageList.startNew()" title-text="Create new image" display="New Image"></pa-new-button>
+            </div>
+        </div>
+
+
+        <div class="col-xs-3">
+            <pa-common-tool-search search-model="imageList.searchImagesBy" pa-placeholder="Search"></pa-common-tool-search>
+        </div>
+
+        <div class="col-xs-3">
+            <pa-common-tool-line filter-model="printMain.filterByLine" locations="printMain.lines"></pa-common-tool-line>
+        </div>
+        <!-- Swapped for Line Filter
+        <div class="col-xs-3">
+            <pa-print-tool-sort sort-order="imageList.sortOrder"></pa-print-tool-sort>
+        </div>
+        -->
+        <div class="col-xs-2">
+            <div class="pull-right">
+                <pa-common-tool-clear-filters on-clear="imageList.clearSearch()"></pa-common-tool-clear-filters>
+            </div>
+        </div>
+    </div> <!-- /.row -->
+</div> <!-- /.pa-toolbar -->

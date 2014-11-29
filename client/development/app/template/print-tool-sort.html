@@ -1,0 +1,17 @@
+<div>
+    <div class="btn-group">
+        <a class="btn btn-default btn-sm"
+           title="Sort Prints by Name"
+           ng-click="setSortOrder('name')"
+           ng-class="{active: sortOrder=='name'}">
+            <i class="fa fa-sort-alpha-asc"></i>
+        </a>
+
+        <a class="btn btn-default btn-sm"
+           title="Sort Prints by Size"
+           ng-click="setSortOrder('sizeSort')"
+           ng-class="{active: sortOrder=='sizeSort'}">
+            <i class="fa fa-sort-amount-asc"></i>
+        </a>
+    </div>
+</div>

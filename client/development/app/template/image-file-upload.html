@@ -1,0 +1,132 @@
+<div class="uploader">
+
+    <form enctype="multipart/form-data">
+
+        <input type="file"
+               name="hidden-uploader"
+               id="hidden-uploader"
+               style="display:none;"
+               onchange="angular.element(this).scope().sendRequest(this);"/>
+
+        <div class="row">
+            <div class="well" style="padding:10px;">
+                <div style="min-height:160px;" ng-switch="isLoading">
+
+                    <img class="center-block"
+                         ng-src="{{imageSrc}}"
+                         ng-if="imageSrc!=''"
+                         ng-switch-when="false"
+                         height="150px;" />
+
+                    <div class="center-block"
+                         ng-switch-when="true"
+                         style="font-size:28px;color:#ffffff; text-align:center;">
+                        <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+
+                        <!--<i class='icon-spinner icon-spin icon-large icon' style="color:inherit;"></i>-->
+                        &nbsp;Image is Loading...
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!--
+        <div class="row" style="margin-top:8px;">
+            <div class="col-xs-6">
+                <input class="form-control" type="text" ng-model="loaded">
+            </div>
+
+            <div class="col-xs-6">
+                <input class="form-control" type="text" ng-model="total">
+            </div>
+        </div>
+        -->
+        <!--
+        <div class="row" style="margin-top:8px;">
+            <label class="control-label col-xs-3 text-right" for="image-name">Server Name</label>
+            <div class="col-xs-9">
+                <input class="form-control" type="text" id="image-name" name="image-name" ng-model="imageName">
+            </div>
+        </div>
+        <div class="row" style="margin-top:8px;">
+            <label class="control-label col-xs-3 text-right" for="file-size">File Size</label>
+            <div class="col-xs-9">
+                <input class="form-control" type="text" id="file-size" name="file-size" ng-model="fileSize">
+            </div>
+        </div>
+        -->
+
+        <div class="row" style="margin-top:8px;">
+            <div class="col-xs-3 text-right">
+                <button class="btn btn-sm btn-default"
+                        id="browse-request">
+                    Browse
+                </button>
+            </div>
+            <div class="col-xs-9">
+                <input class="form-control" type="text" readonly="readonly" ng-model="fileName" style="width:100%">
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:8px;">
+            <div class="col-xs-offset-3 col-xs-8">
+                <button class="btn btn-primary" ng-click="uploadFile()" ng-show="isReadyToUpload==true">Upload this File</button>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="progress progress-bar col-xs-12" ng-show="progress!=0">
+                <div class="bar" style="width:{{progress}}%;"></div>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+    <!-- the real input[type=file] is hidden -->
+
+    <!--//onchange="angular.element(this).scope().sendFile(this);"/>-->
+
+
+    <!--<div xs-file-input="imageFile" on-change="readImageFile()"></div>-->
+    <!--<input type="file" />-->
+    <!--
+    <div class="row" ng-show="fileIsReady">
+
+        <img ng-src="{{imageSrc}}"
+             ng-show="fileIsReady"
+             width="150px"
+             style="margin-top:10px;">
+    </div>
+
+    <div class="row"
+         ng-show="readingFile"
+         class="text-center"
+         style="height:150px;color:#eeeeee;margin-top:25px;">
+
+        <i class="fa fa-spinner fa-5x spin-baby-spin"
+           style="color:#eeeeee;">
+        </i> Loading Image...
+    </div>
+    -->
+
+    <!--
+    <div class="fake-uploader">
+        <label for="uploader"></label>
+        <input type="text" readonly="readonly" ng-model="imageSrc"/>
+    </div>
+
+    <div class="progress" ng-show="progress!=0">
+        <div class="bar" style="width:{{progress}}%;"></div>
+    </div>
+    -->
+
+
+<!--
+<div ng-if="imageSrc!=''" style="margin: 50px 0 0;">
+    <img ng-src="upload/{{imageSrc}}"/>
+</div>
+-->

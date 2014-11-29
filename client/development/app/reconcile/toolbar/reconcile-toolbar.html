@@ -1,0 +1,101 @@
+<div class="pa-toolbar">
+
+    <div class="row">
+
+        <div class="col-xs-1"></div>
+        <div class="col-xs-3">
+            <pa-print-tool-location filter-model="recMain.filterByLocation"
+                                    locations="recMain.locations"
+                                    ng-change="recMain.gotLocationChange();">
+            </pa-print-tool-location>
+        </div>
+
+       <div class="col-xs-3">
+            <pa-common-tool-search search-model="recMain.searchPrintsBy" pa-placeholder="Search"></pa-common-tool-search>
+        </div>
+
+
+        <div class="col-xs-2">
+            <pa-print-tool-sort sort-order="recMain.sortOrder"></pa-print-tool-sort >
+            <!--<pa-common-tool-clear-filters on-clear="recMain.clearSearch()" style="margin-left:4px;"></pa-common-tool-clear-filters>-->
+        </div>
+
+        <div class="col-xs-3">
+            <div class="btn-group btn-group-sm" >
+                <button class="btn btn-default btn-sm"
+                        ng-click="recMain.reset()">
+                    Reset
+                </button>
+
+                <button class="btn btn-primary btn-sm"
+                        ng-click="recMain.save()">
+                    Save
+                </button>
+            </div>
+
+        </div>
+
+    </div> <!--/inner row -->
+
+    <div class="row" style="margin-top:8px;margin-bottom:8px;">
+        <div class="col-xs-1">
+            <!--
+            <div class="pull-right">
+                Status
+            </div>
+            -->
+        </div>
+        <div class="col-xs-10">
+            <!-- select Status -->
+            <ui-select multiple ng-model="recMain.selected.status"
+                       theme="bootstrap"
+                       ng-disabled="disabled"
+                       ng-change="recMain.gotStatusChange();">
+                <ui-select-match placeholder="Status to Reconcile...">{{$item}}</ui-select-match>
+                <ui-select-choices repeat="status in recMain.available.status | orderBy: status">
+                    {{status}}
+                </ui-select-choices>
+            </ui-select>
+            <!--<p>Selected: {{recMain.select.selected}}</p>-->
+        </div>
+
+    </div><!--/row -->
+
+    <div class="row">
+        <div class="col-xs-1"></div>
+
+        <div class="col-xs-10" style="background-color:#444;" ng-hide="recMain.filterByLocation===undefined">
+            <div style="font-size: 14px;color:#ddd;margin:2px 2px;padding:2px 8px 8px 14px;" >
+                Reconciling for:
+                <span class="label label-info" style="font-size:inherit;">{{recMain.filterByLocation}}</span>,
+                total: <span class="badge badge-info" style="font-size:inherit;">{{recMain.filtered.length + recMain.reconciled.length}}</span>,
+                reconciled: <span class="badge badge-info" style="font-size:inherit;">{{recMain.reconciled.length}}</span>,
+                remaining: <span class="badge badge-info">{{recMain.filtered.length}}</span>
+
+            </div>
+        </div>
+
+        <div class="col-sm-10 alert alert-info" ng-hide="recMain.filterByLocation!==undefined">
+            <div style="font-size: 14px;margin:2px 2px;padding:0 0 0 14px;">
+                Select a Location to begin Reconcile
+            </div>
+
+        </div>
+
+    </div><!--/row -->
+
+</div><!--/btn-toolbar -->
+
+
+
+<!--
+<div class="col-lg-5 col-md-5 col-sm-5">
+
+    <ui-select multiple ng-model="recMain.select.selected" theme="bootstrap" ng-disabled="disabled">
+        <ui-select-match placeholder="Status to Reconcile...">{{$item}}</ui-select-match>
+        <ui-select-choices repeat="status in recMain.select.available | orderBy: status">
+            {{status}}
+        </ui-select-choices>
+    </ui-select>
+</div>
+-->

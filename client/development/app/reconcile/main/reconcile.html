@@ -1,0 +1,42 @@
+<div ng-include="'app/reconcile/toolbar/reconcile-toolbar.html'"></div>
+
+<div class="row">
+    <div class="col-xs-6">
+        <ul class="list-group  pa-reconcile-list">
+            <li class="list-group-item"
+                ng-repeat="print in recMain.filtered = ( recMain.prints | filter:{name: recMain.searchPrintsBy, location: recMain.filterByLocation} | paStatusFilter: recMain.selected.status | orderBy: recMain.sortOrder: false )"
+                ng-click="recMain.reconcile(print)">
+                <img class="img-thumbnail pull-left"
+                     ng-src="img/gallery/thumbnail/{{print.fileStub}}.jpg"
+                     style="margin-right: 10px;max-height:70px;">
+
+                <div>
+                    <h4>{{print.size | xsStripSpace}}</h4>
+                    <p>{{print.name | xsEllipsis:28}}<br>
+                       {{print.material}} - {{print.status}}
+                    </p>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-xs-6">
+        <ul class="list-group  pa-reconcile-list">
+            <li class="list-group-item"
+                ng-repeat="print in recMain.reconciled | filter:{location: recMain.filterByLocation, name: recMain.searchPrintsBy} | orderBy: recMain.sortOrder"
+                ng-click="recMain.revert(print)">
+                <img class="img-thumbnail pull-left"
+                     ng-src="img/gallery/thumbnail/{{print.fileStub}}.jpg"
+                     style="margin-right: 10px;max-height:70px;">
+                <div>
+                    <h4>{{print.size | xsStripSpace}}</h4>
+                    <p>{{print.name  | xsEllipsis:28}}<br>
+                       {{print.material}} - {{print.status}}
+                    </p>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+</div>

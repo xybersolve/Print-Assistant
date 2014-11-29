@@ -1,0 +1,32 @@
+.branding {
+    color: #000080;
+}
+.branding h2{
+    font-family: Tahoma, Arial, Helvetica, san-serif;
+    text-shadow: 2px 2px 2px rgba(50,50,50,.5);
+    font-weight: bold;
+}
+.branding p {
+    font-size: 10px;
+    margin-top : -6px;
+    margin-left: 8px;
+    color: #666;
+}
+
+table.ledger {
+    border-collapse:collapse;
+    border-color:#222222;
+}
+table.ledger tr {
+    border-top:1px solid #222222;
+    background-color:#ffffff;
+}
+table.ledger th {
+    padding:4px;
+    border-right:1px solid #444;
+}
+table.ledger td {
+    padding-left:4px;
+    border-right:1px solid #444;
+}
+

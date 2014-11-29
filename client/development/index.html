@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+index.html
+    <title>Print Assistant</title>
+
+    <!-- BEGIN GRUNT SCRIPT BLOCK -->
+    <!-- CSS Styles -->
+    <!-- BootStrap -->
+    <link  href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css"/>
+    <!-- Toastr -->
+    <link rel="stylesheet" href="libs/toastr/toastr.min.css"/>
+    <!-- angular-select -->
+    <link href="libs/angular-ui-select/select.min.css" rel="stylesheet" />
+
+    <!-- PA Main Styles -->
+    <link rel="stylesheet" href="css/styles.css"/>
+
+    <!-- XS Widgets -->
+    <link rel="stylesheet" href="app/common/directive/xybersolve/xs-action-buttons/xs-action-buttons.css"/>
+
+    <!-- MUST COME BEFORE ANY CUSTOM DIRECTIVES -->
+    <script src="app/common/directive/xybersolve/xs-get-script-directory/xs-get-script-directory.js"></script>
+
+    <!-- jQuery -->
+    <script src="libs/jquery/jquery.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="libs/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Angular Core -->
+    <script src="libs/lodash/lodash.js"></script>
+    <script src="libs/angular/angular.js"></script>
+    <script src="libs/angular-animate/angular-animate.js"></script>
+
+    <script src="libs/angular-resource/angular-resource.js"></script>
+    <script src="libs/angular-route/angular-route.js"></script>
+
+    <!-- 3rd party Add Ons -->
+    <!-- Angular UI -->
+    <script src="libs/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="libs/angular-ui-utils/ui-utils.js"></script>
+    <script src="libs/angular-ui-router/angular-ui-router.js"></script>
+    <!-- Angular UI - Select -->
+    <script src="libs/angular-ui-select/select.js"></script>
+
+
+    <!-- angularCharts -->
+    <script src="libs/d3/d3.min.js"></script>
+    <script src="libs/angular-charts/angular-charts.js"></script>
+
+    <!-- Toastr Notification  -->
+    <script src="libs/toastr/toastr.js"></script>
+
+
+    <!-- Angular File Upload -->
+    <script src="libs/angular-file-upload/angular-file-upload.js"></script>
+
+    <!-- may transition to this plugin for multiple selects -->
+    <!--<script src="libs/angular-dropdown-multiselect/dist/angularjs-dropdown-multiselect.min.js"></script>-->
+
+    <!-- Project Files -->
+
+    <!-- Core -->
+    <script src="app/app-modules.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/app-routes.js"></script>
+
+    <!-- Common Utility Services -->
+    <script src="app/common/service/notify-service.js"></script>
+    <script src="app/common/service/xs-angular-cache-service.js"></script>
+    <script src="app/common/service/cache-clients-service.js"></script>
+    <script src="app/common/service/chart-service.js"></script>
+    <script src="app/common/service/login-service.js"></script>
+
+    <!-- HTTP Interceptor Services -->
+    <!--<script src="app/common/service/auth-interceptor-service.js"></script>-->
+    <script src="app/common/service/xs.load.status.message.js"></script>
+
+    <!-- Model Services -->
+    <script src="app/common/model/user-service.js"></script>
+    <script src="app/common/model/size-service.js"></script>
+    <script src="app/common/model/print-service.js"></script>
+    <script src="app/common/model/image-service.js"></script>
+    <script src="app/common/model/lead-service.js"></script>
+    <script src="app/common/model/action-service.js"></script>
+    <script src="app/common/model/interest-service.js"></script>
+    <script src="app/common/model/reconcile-service.js"></script>
+    <script src="app/common/model/location-service.js"></script>
+    <script src="app/common/model/status-service.js"></script>
+    <script src="app/common/model/line-service.js"></script>
+    <script src="app/common/model/field-service.js"></script>
+    <script src="app/common/model/report-service.js"></script>
+    <script src="app/common/model/invoice-service.js"></script>
+
+    <!-- Common Custom Filters -->
+    <script src="app/common/filter/common-filter.js"></script>
+    <script src="app/common/filter/xs-case-convert-filter.js"></script>
+    <script src="app/common/filter/xs-selected-or-all-filter.js"></script>
+
+    <!-- XS Widgets -->
+    <script src="app/common/service/xs.file.reader.service.2.js"></script>
+    <script src="app/common/directive/xybersolve/xs-debug-directives.js"></script>
+    <script src="app/common/directive/xybersolve/xs-ui-directives.js"></script>
+    <script src="app/common/directive/xybersolve/xs-wizard/xs-wizard-widget.js"></script>
+    <script src="app/common/directive/xybersolve/xs-action-buttons/xs-action-buttons-directive.js"></script>
+
+    <!-- Common Directives -->
+    <!--<script src="app/common/directive/pa-entity-action-buttons-directive.js"></script>-->
+    <script src="app/common/directive/pa-panel-directive.js"></script>
+
+    <!-- Common Toolbar Tool Directives -->
+    <script src="app/common/directive/toolbar/pa-tool-clear-filters-directive.js"></script>
+    <script src="app/common/directive/toolbar/pa-tool-new-button-directive.js"></script>
+    <script src="app/common/directive/toolbar/pa-tool-search-directive.js"></script>
+    <script src="app/common/directive/toolbar/pa-tool-list-display-toggle-directive.js"></script>
+    <script src="app/common/directive/toolbar/tool-line/tool-line-directive.js"></script>
+
+    <!-- NavBar & Login -->
+    <script src="app/login/login-controller.js"></script>
+    <script src="app/navbar/navbar-directive.js"></script>
+    <script src="app/navbar/navbar-login-directive.js"></script>
+
+    <!-- Home -->
+    <script src="app/home/home-controller.js"></script>
+
+    <!-- Image  -->
+    <script src="app/image/image-module.js"></script>
+    <script src="app/image/image-routes.js"></script>
+    <script src="app/image/list/image-list-controller.js"></script>
+    <script src="app/image/edit/image-edit-controller.js"></script>
+    <script src="app/image/directive/image-file-upload-directive.js"></script>
+
+    <!-- Prints -->
+    <script src="app/print/print-module.js"></script>
+    <script src="app/print/print-routes.js"></script>
+    <script src="app/print/toolbar/print-toolbar-controller.js"></script>
+    <script src="app/print/main/print-main-controller.js"></script>
+    <script src="app/print/edit/print-edit-controller.js"></script>
+
+    <!-- Print Directives -->
+    <!--<script src="app/print/directives/print-tools-directive.js"></script>-->
+    <script src="app/print/directives/print-tool-location.js"></script>
+    <script src="app/print/directives/print-tool-status.js"></script>
+    <script src="app/print/directives/print-tool-sort.js"></script>
+
+    <!-- Reconcile -->
+    <script src="app/reconcile/reconcile-module.js"></script>
+    <script src="app/reconcile/reconcile-routes.js"></script>
+    <script src="app/reconcile/main/reconcile-controller.js"></script>
+    <script src="app/common/filter/status-filter.js"></script>
+
+    <!-- Lead -->
+    <script src="app/lead/lead-module.js"></script>
+    <script src="app/lead/lead-routes.js"></script>
+    <script src="app/lead/list/lead-list-controller.js"></script>
+    <script src="app/lead/edit/lead-edit-controller.js"></script>
+
+    <!-- Settings -->
+    <script src="app/settings/settings-module.js"></script>
+    <script src="app/settings/settings-routes.js"></script>
+    <script src="app/settings/main/setting-main-controller.js"></script>
+    <script src="app/settings/locations/location-main-controller.js"></script>
+    <script src="app/settings/locations/location-edit-controller.js"></script>
+    <script src="app/settings/locations/location-new-controller.js"></script>
+    <script src="app/settings/status/status-main-controller.js"></script>
+    <script src="app/settings/sizes/size-main-controller.js"></script>
+    <script src="app/settings/user/user-edit-controller.js"></script>
+
+    <!-- Reports -->
+    <script src="app/report/report.module.js"></script>
+    <script src="app/report/report-routes.js"></script>
+    <script src="app/report/menu/report-main-controller.js"></script>
+    <script src="app/report/controller/generic-report-controller.js"></script>
+    <script src="app/report/controller/sale-totals-shared-controller.js"></script>
+    <script src="app/report/controller/print-totals-shared-controller.js"></script>
+
+    <!-- END GRUNT SCRIPT BLOCK -->
+
+</head>
+
+<body ng-app="app" ng-cloak>
+
+    <div class="container">
+        <pa-navbar></pa-navbar>
+
+
+        <div id="content" class="content">
+            <div ui-view
+                 style="min-height:400px">
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
+
