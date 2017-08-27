@@ -3,25 +3,37 @@ var  handlebars  = require('handlebars')
 
 // #TODO: Still to be built Sales Tax & Year End Inventory
 
-module.exports = function(){ 'use strict';
-  return {
-    buildTemplate: function(data) {
-      var commonDir = '/var/www/PhotographyAssistant/server/tools/invoice/templates/common';
-      var templateDir = '/var/www/PhotographyAssistant/server/tools/invoice/templates/invoice';
+exports.emailSubject = 'Year End Inventory & Sales';
+exports.emailText = 'Please find attached a year end print inventory & sales calculations.';
+exports.statementName = 'Year End Inventory & Sales';
+exports.statementDesc = 'inventory & sales reckoning';
 
-      preparePartials();
-      var invoiceTmp = templates.getTemplate('invoice.hbs');
-      var invoice = handlebars.compile(invoiceTmp);
-      return invoice(data);
-    }
-  };
-  function preparePartials() {
-    var headerTmp = templates.getTemplate('header.hbs');
-    var ledgerTmp = templates.getTemplate('ledger.hbs');
-    var footerTmp = templates.getTemplate('footer.hbs');
-    handlebars.registerPartial('header', headerTmp);
-    handlebars.registerPartial('ledger', ledgerTmp);
-    handlebars.registerPartial('footer', footerTmp);
-  }
-
+exports.buildTemplate = function(data) { 'use strict';
+    // TODO: Make this directory dynamic off __dirname
+    preparePartials();
+    var mainTmp = templates.getTemplate('main');
+    var invoice = handlebars.compile(mainTmp);
+    return invoice(data);
 };
+
+exports.buildEMail = function(name, data) { 'use strict';
+  var emailTmp = templates.getEmailTemplate(name);
+  var email = handlebars.compile(emailTmp);
+  return email(data);
+};
+function preparePartials() {
+  var banner = templates.getTemplate('banner');
+  var attributes = templates.getTemplate('attributes');
+  var header = templates.getTemplate('header', 'inventory');
+  var ledgerTmp = templates.getTemplate('ledger', 'inventory');
+  var invoice = templates.getTemplate('invoice', 'invoice');
+  var footer = templates.getTemplate('footer', 'inventory');
+
+
+  handlebars.registerPartial('banner',  banner);
+  handlebars.registerPartial('header',  header);
+  handlebars.registerPartial('attributes',  attributes);
+  handlebars.registerPartial('ledger', ledgerTmp);
+  handlebars.registerPartial('content', invoice);
+  handlebars.registerPartial('footer', footer);
+}

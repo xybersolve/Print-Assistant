@@ -6,7 +6,7 @@
     .factory('reconcileSvc', ['$resource', reconcileSvc]);
 
     function reconcileSvc($resource) {
-      var Reconcile = $resource('/reconcile/:id', {id:'@id'}, {
+      var Reconcile = $resource('api/reconcile/:id', {id:'@id'}, {
         update: {method: 'PUT'},
         save:   {method: 'POST'}
       });

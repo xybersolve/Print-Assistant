@@ -1,0 +1,30 @@
+<div style="font-family:Verdana, Arial, Helvetica, sans-serif">
+
+    <p style="margin-bottom:2em;">
+        Hi {{client.firstName}},
+    </p>
+
+    <p>
+        Please find attached a statement for prints previously on display at {{client.businessName}}.
+        This represents prints that should have been sold.
+        Take a moment to check your sales ledger against this statement.
+        If you notice in discrepancies, please contact me at your earliest convenience.
+    </p>
+    <p>
+        <i>
+            On long lists, the actual list may be found on the next page.
+            Sorry for any inconvenience. We are working to fix it.
+        </i>
+    </p>
+
+    <p style="margin-top:2em;">
+        Thank you,
+    </p>
+
+    <p>
+        {{user.firstName}}
+    </p>
+
+    {{>signature}}
+
+</div>

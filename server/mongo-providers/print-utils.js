@@ -3,7 +3,6 @@ module.exports = function(dbWrap) { 'use strict';
   var prints = [];
   var defaultLocation = 'Default';
 
-  // facade interfac
   return {
     prepPrint: prepPrint,     // preps all including pricing
     prepPricing: prepPricing,  // preps pricing only

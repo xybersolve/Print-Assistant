@@ -208,9 +208,14 @@
     };
     vm.invoice = function() {
       // invoice sends PDF to owner and Location contact
+      var prints = vm.filtered;
       var invoice = new invoiceSvc();
       var copy = angular.copy(invoice);
       copy.name = 'invoice';
+      copy.inventory = [];
+      angular.forEach(vm.filtered, function(print) {
+        copy.inventory.push(print._id);
+      });
       copy.location = vm.filterByLocation;
       //invoice.status = 'On Display';
       copy.status = vm.selected.status;

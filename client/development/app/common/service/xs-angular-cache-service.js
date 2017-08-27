@@ -60,6 +60,15 @@
         }
       };
     };
+  })
+  .provider('xsCacheBuilder', function() {
+
+    this.$get = function(xsCacheFactory) {
+
+    };
+    this.buildClient = function(client) {
+      cd('client')
+    }
   });
 
 })(window, window.angular);

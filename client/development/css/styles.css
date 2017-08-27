@@ -17,6 +17,9 @@ footer {
     text-align: center;
 }
 
+/*
+Overrides for Bootstrap
+*/
 @media (min-width: 767px) and (max-width: 978px) {
     .container {
         max-width:744px;
@@ -24,9 +27,6 @@ footer {
         padding-right: 12px
     }
 }
-/*
-Overrides for Bootstrap
-*/
 .container {
     padding: 8px 0;
 }

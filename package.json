@@ -2,23 +2,39 @@
   "name": "PhotographyAssistant",
   "version": "0.0.1",
   "description": "What it says",
+  "author": {
+    "name": "Greg Milligan",
+    "email": "xybersolve@gmail.com",
+    "url": "gmilligan.github.io"
+  },
+  "license": "ISC",
   "main": "server.js",
   "scripts": {
-    "test": "test"
+    "dev": "export NODE_ENV=development && nohup node ./server.js > server.out &",
+    "dev-debug": "export NODE_ENV=development && node ./server.js",
+    "prod": "export NODE_ENV=production && nohup node ./server.js > server.out &",
+    "start": "npm run dev && ps aux | grep node",
+    "debug": "npm run dev-debug",
+    "show" : "ps aux | grep node"
   },
   "keywords": [
     "photography",
+    "prints",
     "inventory",
-    "galleries",
-    "geolocation"
+    "galleries"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gmilligan/Print-Assistant.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gmilligan/Print-Assistant/issues"
+  },
   "dependencies": {
     "body-parser": "~1.4.2",
     "compress": "^0.99.0",
-    "cors": "^2.4.1",
     "express": "~4.5.1",
     "method-override": "~2.0.2",
-    "mongoose": "~3.8.0",
     "bcrypt": "^0.8.0",
     "bcrypt-nodejs": "0.0.3",
     "morgan": "^1.3.0",
@@ -29,7 +45,7 @@
     "jsonwebtoken": "^1.1.2",
     "express-jwt": "^0.4.0",
     "q": "^1.0.1",
-    "async": "^0.9.0",
+    "async": "^0.5.2",
     "phantom": "^0.7.0",
     "phantomjs": "^1.9.12",
     "handlebars": "^2.0.0"
@@ -54,7 +70,7 @@
     "grunt-replace": "^0.7.9",
     "jshint-stylish": "^0.4.0",
     "ngmin": "^0.5.0"
-  },
-  "author": "Greg Milligan",
-  "license": "ISC"
+
+  }
+
 }

@@ -13,15 +13,3 @@ module.exports = function errorHandler(environment){  'use strict';
     res.json(error);
   };
 };
-/*
-app.use(function logErrors(err, req, res, next) {
-  console.error(err.stack);
-  next(err);
-});
-app.use(function restErrorHandler (err, req, res, next) {
-  res.status(500).json({ status:500, message: 'Internal Error', success: false, type: 'internal', err: err});
-  res.end();
-});
-*/
-
-

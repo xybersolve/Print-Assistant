@@ -61,11 +61,10 @@
     })
 
     .filter('xsEllipsis', function () {
-      return function (input, chars, breakOnWord) {
-        if (isNaN(chars)) return input;
-        if (chars <= 0) return '';
-        if (input && input.length > chars) {
-          input = input.substring(0, chars);
+      return function (input, maxLength, breakOnWord) {
+        if (isNaN(maxLength)) maxLength = 10;
+        if (input && input.length > maxLength) {
+          input = input.substring(0, maxLength);
 
           if (!breakOnWord) {
             var lastspace = input.lastIndexOf(' ');
@@ -73,7 +72,7 @@
             if (lastspace !== -1) {
               input = input.substr(0, lastspace);
             }
-          }else{
+          } else {
             while(input.charAt(input.length-1) === ' '){
               input = input.substr(0, input.length -1);
             }

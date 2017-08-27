@@ -8,10 +8,16 @@ module.exports = function(mongoWrap){ 'use strict';
     findAll: function (opts, cb) {
       var query = {
         collection : collectionName,
-        where : {owner: opts.owner, active: true}
-        //sort : {name: 1, sizeSort: 1}
+        where : {
+          owner: opts.owner
+          //active: true
+        },
+        sort : {
+          name: 1,
+          sizeSort: 1
+        }
       };
-      //console.log('prints::findAll'); console.dir(query);
+      //console.log('prints::findAll()'); wrap.show(query);
 
       wrap.findAll(query, function(err, results) {
         if(err) return cb(err);
@@ -30,7 +36,7 @@ module.exports = function(mongoWrap){ 'use strict';
     insert: function (opts, cb) {
       opts.collection = collectionName;
       opts.data.owner = opts.owner;
-
+      opts.data.acvtive = true;
       //console.log('Pre prep: '); wrap.show(opts.data);
 
       printUtils.prepNewPrint(opts.data);

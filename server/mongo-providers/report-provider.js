@@ -38,6 +38,22 @@ module.exports = function(mongoWrap){ 'use strict';
         cb(null, results);
       });
     },
+    latestStatusChanges: function(opts, cb) {
+      var query = {
+        collection: 'prints',
+        where: {owner: opts.owner},
+        sort: {date: -1, location: 1}
+      };
+      wrap.db
+        .collection(query.collection)
+        .find(query.where)
+        .limit(300)
+        .sort(query.sort)
+        .toArray(function (err, doc) {
+          if(err) return cb(err);
+          cb(null, {data: doc});
+        });
+    },
     printTotalsByLocation: function(opts, cb) {
       wrap.connect(function(err, db) {
         if (err) return cb(err);

@@ -1,10 +1,16 @@
 var express     = require('express')
   , fs          = require('fs')
   , router      = express.Router()
-  , images      = null;
+  , formidable  = require('formidable')
+  , dbug        = require('../tools/dbug')
+  , imageUtils  = null
+  , images      = null
+  , basePath    = '';
 
-module.exports = function(imageProvider) { 'use strict';
-  images = imageProvider;
+module.exports = function(imageProvider, rootPath) { 'use strict';
+
+  images      = imageProvider;
+  imageUtils  = require('./images-utils');
 
   router.get('/', function(req, res, next){
     var opts = {
@@ -23,15 +29,28 @@ module.exports = function(imageProvider) { 'use strict';
       res.json(data);
     });
   });
+
   // new image
   router.post('/', function(req, res, next){
     var opts = {
       owner: req.owner,
       data:  req.body
     };
-    images.save(opts, function(err, result) {
-      if(err) return next(err);
-      res.json(result);
+    //dbug.show(opts);
+    //imageUtils.formatFileStubName(opts.data);
+    //dbug.show(opts);
+
+    var form = formidable.IncomingForm();
+    form.parse(req, function(err, fields, files) {
+      if(err) return console.log(err);
+
+      imageUtils.renderFile(opts.data, files.file, rootPath, function(err) {
+        if(err) return console.log(err);
+        images.save(opts, function(err, result) {
+          if(err) return next(err);
+          res.json(result);
+        });
+      });
     });
   });
 

@@ -4,11 +4,11 @@
   angular
     .module('app.reconcile')
 
-    .controller('ReconcileCtrl', ['_', 'printSvc', 'fieldSvc', 'reconcileSvc', 'reconcileCacheSvc', 'notifySvc', '$timeout', ReconcileCtrl]);
-  function       ReconcileCtrl (   _ ,  printSvc,   fieldSvc,   reconcileSvc,   reconcileCacheSvc,   notifySvc,   $timeout) {
+    .controller('ReconcileCtrl', ['_', 'printSvc', 'fieldSvc', 'reconcileSvc', 'reconcileCacheSvc', 'invoiceSvc', 'notifySvc', '$timeout', ReconcileCtrl]);
+  function       ReconcileCtrl (   _ ,  printSvc,   fieldSvc,   reconcileSvc,   reconcileCacheSvc,   invoiceSvc, notifySvc,   $timeout) {
 
     var STATUS_KEY = 'status';
-    var defaultStatus = ["On Display", "Back Stocked", "Sold-Pending"];
+    var defaultStatus = ["On Display", "Back Stocked", "Sold-Pending", "Special Order"];
 
     var vm = this;
     vm.clearSearch = function() {
@@ -80,6 +80,33 @@
     };
     vm.save = function() {
       console.log('Saving Reconcile');
+    };
+
+    vm.invoice = function() {
+      // invoice sends PDF to owner and Location contact
+      var invoice = new invoiceSvc();
+      var copy = angular.copy(invoice);
+      copy.name = 'reconcile';
+      copy.reconciled = [];
+      copy.remaining = [];
+      angular.forEach(vm.filtered, function(print){
+        copy.remaining.push(print._id);
+      });
+      angular.forEach(vm.reconciled, function(print){
+          copy.reconciled.push(print._id);
+      });
+
+      copy.location = vm.filterByLocation;
+      //invoice.status = 'On Display';
+      copy.status = vm.selected.status;
+      //copy.$sendInvoice().then(function(result) {
+      copy.sendNamedInvoice().then(function(result) {
+        if(result.success === true){
+          notifySvc.success('Successfully sent invoice to buyer and user.');
+        } else {
+          notifySvc.error('Oops! There was an error sending the invoice.');
+        }
+      });
     };
 
     function load(){

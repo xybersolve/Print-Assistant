@@ -1,0 +1,138 @@
+<h4>Year End Inventory - {{year}}</h4>
+<table class="ledger" width="100%">
+    <tr style="background-color:#666666;color:#ffffff;">
+        <th width="35%" align="left" style="border-left:1px solid #444;">
+            Status
+        </th>
+        <th width="20%" align="left">
+            Qty
+        </th>
+        <th width="20%" align="left">
+            Price
+        </th>
+        <th width="20%" align="left">
+            Cost
+        </th>
+    </tr>
+
+    {{#data}}
+        <tr style="border-top:1px solid #222222;background-color:{{bgColor}}">
+            <td align="left" style="border-left:1px solid #444;">
+                {{_id}}
+            </td>
+            <td align="right" >
+                {{totalCount}}
+            </td>
+            <td align="right">
+                ${{totalPrice}}.00
+            </td>
+            <td align="right">
+                ${{totalCost}}.00
+            </td>
+
+        </tr>
+    {{/data}}
+
+    <tr class="totals">
+        <td align="right" colspan="1" style="padding-right:4px;border:1px solid #444;background-color:#fff;color:#222;">
+            Total:
+        </td>
+
+        <td align="right" style="padding-right:4px;border:1px solid #444;background-color:#fff;color:#222;">
+            {{totals.count}}
+        </td>
+
+        <td align="right" style="padding-right:4px;border:1px solid #444;background-color:#fff;color:#222;">
+            ${{totals.price}}.00
+        </td>
+
+        <td align="right" style="padding-right:4px;border:1px solid #444;background-color:#fff;color:#222;">
+            ${{totals.cost}}.00
+        </td>
+
+    </tr>
+</table>
+
+<h4>Year End Sales - {{year}}</h4>
+
+<table class="ledger" width="100%">
+    <tr style="background-color:#666666;color:#ffffff;">
+        <th width="28%" align="left" style="border-left:1px solid #444;">
+            Location
+        </th>
+        <th width="12%" align="left">
+            Qty
+        </th>
+        <th width="12%" align="left">
+            Price
+        </th>
+        <th width="12%" align="left">
+            Cost
+        </th>
+        <th width="12%" align="left">
+            Comm.
+        </th>
+        <th width="12%" align="left">
+            Profit
+        </th>
+        <th width="12%" align="left">
+            % Margin
+        </th>
+    </tr>
+
+    {{#sales.data}}
+        <tr style="border-top:1px solid #222222;background-color:{{bgColor}}">
+            <td align="left" style="border-left:1px solid #444;">
+                {{_id}}
+            </td>
+            <td align="right" >
+                {{totalCount}}
+            </td>
+            <td align="right">
+                ${{totalPrice}}
+            </td>
+            <td align="right">
+                ${{totalCost}}
+            </td>
+            <td align="right">
+                ${{totalCommission}}
+            </td>
+            <td align="right">
+                ${{totalProfit}}
+            </td>
+            <td align="right" >
+                {{avgNetMarginPercent}}%
+            </td>
+
+        </tr>
+    {{/sales.data}}
+
+
+    <tr class="totals">
+        <td align="right" colspan="1" style="padding-right:4px;border:1px solid #444;background-color:#fff;color:#222;">
+            Total:
+        </td>
+
+        <td align="right" style="padding-right:4px;border:1px solid #444;background-color:#fff;color:#222;">
+            {{sales.totals.count}}
+        </td>
+
+        <td align="right" style="padding-right:4px;border:1px solid #444;background-color:#fff;color:#222;">
+            ${{sales.totals.price}}
+        </td>
+
+        <td align="right" style="padding-right:4px;border:1px solid #444;background-color:#fff;color:#222;">
+            ${{sales.totals.cost}}
+        </td>
+        <td align="right" style="padding-right:4px;border:1px solid #444;background-color:#fff;color:#222;">
+            ${{sales.totals.commission}}
+        </td>
+        <td align="right" style="padding-right:4px;border:1px solid #444;background-color:#fff;color:#222;">
+            ${{sales.totals.profit}}
+        </td>
+        <td align="right" style="padding-right:4px;border:1px solid #444;background-color:#fff;color:#222;">
+            {{sales.totals.marginPercent}}%
+        </td>
+
+    </tr>
+</table>

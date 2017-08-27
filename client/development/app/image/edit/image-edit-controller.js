@@ -3,8 +3,8 @@
 
   angular
     .module('app.image')
-    .controller('ImageEditCtrl', ['$rootScope', '$state', '_', '$upload', 'notifySvc', 'lineSvc', 'image', 'lines', ImageEditCtrl]);
-    function     ImageEditCtrl (   $rootScope,   $state,   _ ,  $upload,   notifySvc,   lineSvc,   image,   lines  ) {
+    .controller('ImageEditCtrl', ['$rootScope', '$state', '$http', '_', '$upload', 'notifySvc', 'lineSvc', 'image', 'lines', ImageEditCtrl]);
+    function     ImageEditCtrl (   $rootScope,   $state,   $http, _ ,  $upload,   notifySvc,   lineSvc,   image,   lines  ) {
 
       //#TODO: image file upload and split (thumbnail, med, large) on server
 
@@ -50,15 +50,51 @@
       vm.save = function() {
         console.log('Updating Image');
         console.dir(vm.image);
-        vm.image.update().then(function(result) {
+        var data = {
+          model : {
+            lines: vm.image.lines,
+            name: vm.image.name,
+            owner: vm.image.owner,
+            created: vm.image.created
+          },
+          file: vm.image.fileData.file
+        };
+        console.log('$http data');
+        console.dir(data);
+
+        $http({
+          method: 'POST',
+          url: '/api/images',
+          headers: {'Content-Type' : undefined},
+          transformRequest: function(data){
+            var formData = new FormData();
+            formData.append('model', angular.toJson(data.model));
+            formData.append('file1', data.file);
+            return formData;
+          },
+          data:data
+
+        }).success(function(data, status, headers, config) {
+          console.log('Success');
+          console.dir(data);
+          console.dir(status);
+
+        }).error(function(data, status, headers, config) {
+          console.log('Error');
+          console.dir(data);
+          console.dir(status);
+        });
+
+        //vm.image.$save().then(function(result) {
+       /*
+        vm.image.saveNew().success(function(result) {
           if(result.success===true){
             notifySvc.success('Successfully saved Image.');
             vm.goBack();
           } else {
             notifySvc.error('Unable to save Image!');
           }
-        });
-
+        });*/
       };
       // ******************************************
       // Line Routines

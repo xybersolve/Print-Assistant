@@ -1,0 +1,23 @@
+<div class="image-upload">
+
+    <div ng-file-drop
+         ng-file-select
+         ng-model="files"
+         ng-file-change="upload(files)"
+         class="drop-box center-block"
+         drag-over-class="dragover"
+         ng-multiple="false"
+         allow-dir="false"
+         accept="image/*">
+
+        <div class="show-image center-block"
+             ng-show="imageUrl !== undefined">
+            <img ng-src="{{imageUrl}}" class="center-block">
+        </div>
+
+        <div class="drop-image-text">{{ placeHolder | translate }}</div>
+    </div>
+
+    <div ng-no-file-drop>{{ support | translate }}</div>
+
+</div>

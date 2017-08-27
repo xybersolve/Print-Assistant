@@ -2,9 +2,9 @@ var _      = require('underscore')
   , async  = require('async');
 
 module.exports = function(mongoWrap){ 'use strict';
-
   var wrap = mongoWrap
     , collectionName = 'images';
+    //, imageUtils = require('./image-utils')(mongoWrap);
 
   return {
 
@@ -79,9 +79,18 @@ module.exports = function(mongoWrap){ 'use strict';
     },
 
     // save new image
+    saveImage: function(opts, cb) {
+      //opts.data.fileStub = imageUtils.formatFileStubName(opts.data.name);
+
+
+    },
     save: function (opts, cb) {
       opts.collection = collectionName;
       opts.data.owner = opts.owner;
+
+      //imageUtils.uploadFile(opts.data);
+      //wrap.show(opts.data);
+
       wrap.insert(opts, function(err, result){
         if(err) return cb(err);
         cb(null, result);

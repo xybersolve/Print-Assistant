@@ -1,4 +1,6 @@
-var invoiceDirectory = '/var/www/PhotographyAssistant/server/tools/invoice/invoices'
+// TODO: Make this directory dynamic off __dirname
+// TODO: Enable test mode - invoices sent to development only
+var invoiceDirectory = '/var/www/PrintAssistant/server/tools/invoice/invoices'
   , phantom   = require('phantom')
   //, handlebars  = require('handlebars')
   , mailer      = require('nodemailer')
@@ -14,25 +16,35 @@ module.exports = function(cfg, dbWrap) { 'use strict';
   return {
     makeInvoice: function (name, data, cb) {
       // engine is specific to invoice selected
-      data.user.phone = formatPhoneNumber(data.user.phone);
-      data.client.phone1 = formatPhoneNumber(data.client.phone1);
+      if(data.user && data.user.phone){
+        data.user.phone = formatPhoneNumber(data.user.phone);
+      }
+
+      // for debug mode, where user has a singular phone
+      if(data.client && (data.client.phone1 || data.client.phone)){
+        var clientPhone = (data.client.phone1) ? data.client.phone1 : data.client.phone;
+        data.client.phone1 = formatPhoneNumber(clientPhone);
+      }
+
+      console.log('Loading Invoice Engine');
       var engineFile = './engines/' + name;
       engine = require(engineFile);
+      // populate template attributes
+      data.statementName = engine.statementName ? engine.statementName : '';
+      data.statementDesc = engine.statementDesc ? engine.statementDesc : '';
+      var today = new Date();
+      data.today = today.toLocaleDateString();
+
       console.log('Making Invoice');
       var html = engine.buildTemplate(data);
       var email = engine.buildEMail(name, data);
+
       console.log('Converting to PDF');
       makePDF(html, function(err) {
         if(err) return cb(err);
+
         console.log('Sending Invoice');
-        var sendOpts = {
-          from:    makeEmailAddress(data.user),
-          to:      makeEmailAddress(data.client),
-          cc:      makeEmailAddress(data.user),
-          subject: engine.emailSubject,
-          text:    engine.emailText,
-          email: email
-        };
+        var sendOpts = configureEmail(cfg, data);
         sendInvoice(sendOpts, function(err, result) {
           if(err) return cb(err);
           console.log('Sent Invoice');
@@ -41,22 +53,59 @@ module.exports = function(cfg, dbWrap) { 'use strict';
       });
     }
   };
+  function configureEmail(cfg, data){
+    var sendOpts = {
+      from:    makeEmailAddress(data.user),
+      to:      makeEmailAddress(data.client),
+      cc:      makeEmailAddress(data.user),
+      subject: engine.emailSubject,
+      text:    engine.emailText,
+      email: email
+    };
+    // debug mode send to developer (user)
+    if(cfg.invoice.debugMode===true) {
+      console.log('Sending Development Invoice Only');
+      sendOpts.to =  makeEmailAddress(data.user);
+    }
+    return sendOpts;
+  }
   function makePDF(html, cb) {
     phantom.create(function (ph) {
       ph.createPage(function (page) {
         page.set('viewportSize', {width:800, height: 600});
-        page.set('paperSize',{format:'A4', orientation:'portrait', border:'1cm'});
+        page.set('paperSize',{format:'A4',
+                              orientation:'portrait',
+                              footer:'0cm',
+                              margin:{
+                                left:'1cm',
+                                right:'1cm',
+                                top:'.5cm',
+                                bottom:'.15cm'
+                              }
+        });
+
         page.set('content', html, function(err) {
           if(err) return cb(err);
         });
         page.render(invoiceDirectory + '/invoice.pdf', function () {
-          //page.render(invoiceDirectory + 'google.pdf', function(){
           console.log('Page Rendered');
           ph.exit();
           cb(null);
         });
       });
     });
+    /*
+    var wkhtmltopdf = require('wkhtmltopdf');
+    var fs = require('fs');
+    var r = wkhtmltopdf(html, { pageSize: 'letter' })
+      .pipe(fs.createWriteStream(invoiceDirectory + '/invoice.pdf'));
+
+    r.on('end', function () {
+      cb(null)
+    });
+    */
+
+
   }
   function formatPhoneNumber(phone){
     var work = phone + '';
@@ -145,3 +194,35 @@ module.exports = function(cfg, dbWrap) { 'use strict';
   }*/
 
 };
+
+
+/*
+// html2pdf.js
+var page = new WebPage();
+var system = require("system");
+// change the paper size to letter, add some borders
+// add a footer callback showing page numbers
+page.paperSize = {
+  format: "Letter",
+  orientation: "portrait",
+  margin: {left:"2.5cm", right:"2.5cm", top:"1cm", bottom:"1cm"},
+  footer: {
+    height: "0.9cm",
+    contents: phantom.callback(function(pageNum, numPages) {
+      return "
+      " + pageNum +
+      " / " + numPages + "
+      ";
+    })
+  }
+};
+
+
+page.zoomFactor = 1.5;
+// assume the file is local, so we don't handle status errors
+page.open(system.args[1], function (status) {
+  // export to target (can be PNG, JPG or PDF!)
+  page.render(system.args[2]);
+  phantom.exit();
+});
+*/

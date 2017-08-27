@@ -24,7 +24,6 @@
         email: ''
       };
 
-
       // delete and get fresh token from server
       loginSvc.removeUserToken();
       // try background login - using local credentials

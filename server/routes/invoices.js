@@ -31,6 +31,7 @@ module.exports = function(invoiceProvider, invoiceGenerator) { 'use strict';
       data:   req.body,
       name:   req.params.name
     };
+    console.dir(opts);
     invoices[opts.name](opts, function(err, data) {
       if(err) return next(err);
       generator.makeInvoice(opts.name, data, function(err, result) {

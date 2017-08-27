@@ -19,7 +19,6 @@ dist
 about.txt
 *.sh
 *.out
-*.out
 *.err
 client/development/libs/
 client/development/app/lead

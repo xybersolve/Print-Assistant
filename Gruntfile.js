@@ -1,6 +1,4 @@
-module.exports = function(grunt){
-    //grunt.initConfig(grunt.file.readJSON('config.json'));
-  "use strict";
+module.exports = function(grunt){ "use strict";
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -29,10 +27,8 @@ module.exports = function(grunt){
       all:[
         'Gruntfile.js',
         '<%= devAppDir %>/app.js',
-        '<%= devAppDir %>/*.js',
         '<%= devAppDir %>/**/*.js',
         './server.js',
-        './server/*.js',
         './server/**/*.js']
     },
 

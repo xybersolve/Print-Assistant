@@ -1,4 +1,5 @@
-var templateDir = '/var/www/PhotographyAssistant/server/tools/invoice/templates'
+// TODO: Make this directory dynamic off __dirname
+var templateDir = '/var/www/PrintAssistant/server/tools/invoice/templates'
   , commonDir   = templateDir + '/common'
   , emailDir    = templateDir + '/emails'
   , fs          = require('fs');
